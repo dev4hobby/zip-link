@@ -1,0 +1,7 @@
+{
+  "REDIS_HOST": "localhost",
+  "REDIS_PORT": 6379,
+  "REDIS_USER": "default",
+  "REDIS_PASSWORD": "password",
+  "LAMBDA_LAYER": "your-lambda-layer-arn"
+}
