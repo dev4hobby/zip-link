@@ -1,0 +1,31 @@
+org: d3fau1t
+app: ziplink
+service: ziplink
+
+frameworkVersion: '3'
+
+package:
+  individually: true
+  patterns:
+    - "!config.json"
+
+provider:
+  name: aws
+  runtime: python3.9
+  lambdaHashingVersion: 20201221
+
+  stage: dev
+  region: ap-northeast-2
+
+  environment:
+    REDIS_HOST: ${file(./config.json):REDIS_HOST}
+    REDIS_PORT: ${file(./config.json):REDIS_PORT}
+    REDIS_USER: ${file(./config.json):REDIS_USER}
+    REDIS_PASSWORD: ${file(./config.json):REDIS_PASSWORD}
+    LAMBDA_LAYER: ${file(./config.json):LAMBDA_LAYER}
+
+functions:
+  hello:
+    handler: handler.hello
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}
