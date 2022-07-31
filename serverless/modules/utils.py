@@ -28,4 +28,6 @@ def update_headers(headers: dict, response: dict) -> dict:
     if response.get("headers"):
         if headers:
             response.update("headers", headers)
+    else:
+        response["headers"] = headers
     return response
