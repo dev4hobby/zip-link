@@ -1,6 +1,7 @@
 import logging
 from redis import StrictRedis
 from redis.client import Redis as ClientRedis
+from functools import lru_cache
 
 from modules.env import REDIS_CONFIG as rc
 
@@ -56,6 +57,7 @@ class Redis:
         return {"key": key, "value": value}
 
 
+@lru_cache
 def get_redis() -> ClientRedis:
     r = Redis()
     r.get_pool()
