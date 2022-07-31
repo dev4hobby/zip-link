@@ -4,7 +4,8 @@ from redis.client import Redis as ClientRedis
 from functools import lru_cache
 
 from modules.env import REDIS_CONFIG as rc
-
+from datetime import timedelta
+from typing import Union
 
 class Redis:
     def __init__(self):
@@ -46,7 +47,7 @@ class Redis:
         logging.info(f"Redis set: {key} = {value}")
         return {"key": key, "value": value}
 
-    def setex(self, key: str, value: str, ttl: int) -> dict:
+    def setex(self, key: str, value: str, ttl: Union[int, timedelta]) -> dict:
         try:
             self.redis.setex(key, ttl, value)
         except Exception as e:
