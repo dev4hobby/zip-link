@@ -1,5 +1,3 @@
-org: d3fau1t
-app: ziplink
 service: ziplink
 
 frameworkVersion: '3'
@@ -12,8 +10,6 @@ package:
 provider:
   name: aws
   runtime: python3.9
-  lambdaHashingVersion: 20201221
-
   stage: dev
   region: ap-northeast-2
 
@@ -25,7 +21,29 @@ provider:
     LAMBDA_LAYER: ${file(./config.json):LAMBDA_LAYER}
 
 functions:
-  hello:
-    handler: handler.hello
+  get_url:
+    handler: handler.get_url
+    events:
+      - http:
+          path: url
+          method: get
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}
+  
+  get_url_by_pathparam:
+    handler: handler.get_url_by_pathparam
+    events:
+      - http:
+          path: url/{id}
+          method: get
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}
+
+  set_url:
+    handler: handler.set_url
+    events:
+      - http:
+          path: url
+          method: post
     layers:
       - ${file(./config.json):LAMBDA_LAYER}
