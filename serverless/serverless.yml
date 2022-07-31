@@ -47,3 +47,12 @@ functions:
           method: post
     layers:
       - ${file(./config.json):LAMBDA_LAYER}
+  
+  redirect_url:
+    handler: handler.redirect_url
+    events:
+      - http:
+          path: url/r/{id}
+          method: get
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}

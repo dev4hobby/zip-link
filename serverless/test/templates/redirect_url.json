@@ -1,0 +1,10 @@
+{
+  "body": "eyJ0ZXN0IjoiYm9keSJ9",
+  "resource": "/{proxy+}",
+  "path": "/url/r",
+  "httpMethod": "GET",
+  "isBase64Encoded": true,
+  "pathParameters": {
+    "id": "W3BCCn"
+  }
+}
