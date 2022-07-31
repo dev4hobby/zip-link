@@ -18,3 +18,4 @@ test:
 test-sls:
 	sls invoke local --function get_url --path test/templates/get_url.json
 	sls invoke local --function get_url_by_pathparam --path test/templates/get_url_by_pathparam.json
+	sls invoke local --function set_url --path test/templates/set_url.json
