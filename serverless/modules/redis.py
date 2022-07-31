@@ -56,6 +56,19 @@ class Redis:
         logging.info(f"Redis setex [ttl {ttl}]: {key} = {value}")
         return {"key": key, "value": value}
 
+    def extend_expire(self, key: str, ttl: [int, timedelta]) -> dict:
+        """
+        사용된 키의 유효기간을 연장합니다.
+        """
+        try:
+            self.redis.expire(key, ttl)
+        except Exception as e:
+            logging.error(f"Redis extend_expire: {key}")
+            logging.error(e)
+            raise e
+        logging.info(f"Redis extend_expire [ttl {ttl}]: {key}")
+        return {"key": key, "ttl": ttl}
+
 
 @lru_cache
 def get_redis() -> ClientRedis:
