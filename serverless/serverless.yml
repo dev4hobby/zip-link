@@ -1,0 +1,49 @@
+service: ziplink
+
+frameworkVersion: '3'
+
+package:
+  individually: true
+  patterns:
+    - "!config.json"
+
+provider:
+  name: aws
+  runtime: python3.9
+  stage: dev
+  region: ap-northeast-2
+
+  environment:
+    REDIS_HOST: ${file(./config.json):REDIS_HOST}
+    REDIS_PORT: ${file(./config.json):REDIS_PORT}
+    REDIS_USER: ${file(./config.json):REDIS_USER}
+    REDIS_PASSWORD: ${file(./config.json):REDIS_PASSWORD}
+    LAMBDA_LAYER: ${file(./config.json):LAMBDA_LAYER}
+
+functions:
+  get_url:
+    handler: handler.get_url
+    events:
+      - http:
+          path: url
+          method: get
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}
+  
+  get_url_by_pathparam:
+    handler: handler.get_url_by_pathparam
+    events:
+      - http:
+          path: url/{id}
+          method: get
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}
+
+  set_url:
+    handler: handler.set_url
+    events:
+      - http:
+          path: url
+          method: post
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}

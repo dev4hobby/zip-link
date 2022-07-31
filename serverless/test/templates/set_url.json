@@ -1,0 +1,7 @@
+{
+  "body": "{\n    \"url\": \"https://github.com/aciddust\"\n}",
+  "resource": "/{proxy+}",
+  "path": "/url",
+  "httpMethod": "POST",
+  "isBase64Encoded": true
+}

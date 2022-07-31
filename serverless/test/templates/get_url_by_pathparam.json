@@ -1,0 +1,10 @@
+{
+  "body": "eyJ0ZXN0IjoiYm9keSJ9",
+  "resource": "/{proxy+}",
+  "path": "/url",
+  "httpMethod": "GET",
+  "isBase64Encoded": true,
+  "pathParameters": {
+    "id": "D3fau1"
+  }
+}
