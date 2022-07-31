@@ -1,7 +1,7 @@
 {
   "body": "eyJ0ZXN0IjoiYm9keSJ9",
   "resource": "/{proxy+}",
-  "path": "/url/r",
+  "path": "/r",
   "httpMethod": "GET",
   "isBase64Encoded": true,
   "pathParameters": {

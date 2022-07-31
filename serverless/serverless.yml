@@ -52,7 +52,7 @@ functions:
     handler: handler.redirect_url
     events:
       - http:
-          path: url/r/{id}
+          path: r/{id}
           method: get
     layers:
       - ${file(./config.json):LAMBDA_LAYER}
