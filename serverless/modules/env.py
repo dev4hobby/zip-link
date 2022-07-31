@@ -2,6 +2,8 @@ import json
 import pipes
 from os import getenv, environ, path
 
+BASE_PATH = path.dirname(path.dirname(path.realpath(__file__)))
+
 
 def init_json_env() -> None:
     """
