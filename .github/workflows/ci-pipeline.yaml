@@ -1,10 +1,12 @@
 name: ci-pipeline
-on:
-  push:
-    branches:
-      - main
+on: [push]
 jobs:
   run-test-code:
+    env:
+      REDIS_HOST: ${{ secrets.REDIS_HOST }}
+      REDIS_PORT: ${{ secrets.REDIS_PORT }}
+      REDIS_USER: ${{ secrets.REDIS_USER }}
+      REDIS_PASSWORD: ${{ secrets.REDIS_PASSWORD }}
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
@@ -13,3 +15,4 @@ jobs:
           python-version: "3.9"
       - run: pip install -r requirements.txt
       - run: pytest
+      
