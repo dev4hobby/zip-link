@@ -2,7 +2,7 @@ import type { NextPage } from 'next'
 import Head from 'next/head'
 import { Button, Divider } from '@mui/material';
 import styles from '../styles/Home.module.css'
-import { useState, useRef } from 'react'
+import { useRef } from 'react'
 import { apiBaseUrl } from '../env';
 import LineWeight from '@mui/icons-material/LineWeight';
 import TextField from '@mui/material/TextField';
