@@ -1,0 +1,17 @@
+{
+  "manifest_version": 3,
+  "name": "Z1pLink",
+  "version": "1.0.0",
+  "description": "It makes your link shorter",
+  "permissions": [
+    "tabs",
+    "contextMenus"
+  ],
+  "host_permissions": [
+    "*://*/*"
+  ],
+  "action": {
+    "default_title": "Z1pLink",
+    "default_popup": "index.html"
+  }
+}
