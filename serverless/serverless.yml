@@ -25,7 +25,7 @@ functions:
     handler: handler.get_url
     events:
       - http:
-          path: /url
+          path: url
           method: get
     layers:
       - ${file(./config.json):LAMBDA_LAYER}
@@ -34,7 +34,7 @@ functions:
     handler: handler.get_url_by_pathparam
     events:
       - http:
-          path: /url/{id}
+          path: url/{id}
           method: get
     layers:
       - ${file(./config.json):LAMBDA_LAYER}
@@ -43,7 +43,7 @@ functions:
     handler: handler.set_url
     events:
       - http:
-          path: /url
+          path: url
           method: post
           cors: true
     layers:
@@ -53,7 +53,7 @@ functions:
     handler: handler.redirect_url
     events:
       - http:
-          path: /r/{id}
+          path: r/{id}
           method: get
     layers:
       - ${file(./config.json):LAMBDA_LAYER}
