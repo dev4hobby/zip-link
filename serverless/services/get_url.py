@@ -14,7 +14,7 @@ def get_id_by_param(event, param_name) -> Tuple[dict, int]:
     if not origin_url:
         return ({"message": "No origin url"}, 404)
 
-    redis.extend_expire(original_url, days=7)
+    redis.extend_expire(origin_url, days=7)
     redis.extend_expire(short_id, days=7)
 
     body = {
