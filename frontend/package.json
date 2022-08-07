@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && next export && yarn extension",
+    "extension": "mv ./out/_next ./out/next && cd ./out && grep -rli '_next' * | xargs -I@ sed -i '' 's|/_next|/next|g' @;",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "clean": "rm -rf out"
   },
   "dependencies": {
     "@emotion/react": "^11.10.0",
@@ -18,6 +20,7 @@
     "react-dom": "18.2.0"
   },
   "devDependencies": {
+    "@types/chrome": "^0.0.193",
     "@types/node": "18.6.3",
     "@types/react": "18.0.15",
     "@types/react-dom": "18.0.6",
