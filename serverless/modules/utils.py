@@ -3,9 +3,12 @@ import re
 from random import choice
 from string import ascii_letters, digits
 
+API_SERVER_URL = "https://a.z1p.link"
+
+STRING_SET = list(ascii_letters + digits)
 # Random string generator, limit 6
-def generate_random_string(length=6) -> str:
-    return "".join(choice(ascii_letters + digits) for i in range(length))
+def generate_random_string(string_set: str, length=6) -> str:
+    return "".join(choice(string_set) for i in range(length))
 
 
 def validate_url_with_regex(url) -> bool:
@@ -17,8 +20,18 @@ def validate_url_with_regex(url) -> bool:
     )
 
 
-def json_response(body, status_code=200) -> dict:
+def json_response(
+    body,
+    status_code=200,
+    headers={
+        "Access-Control-Allow-Origin": "*",
+        "Access-Control-Allow-Credentials": True,
+        "Access-Control-Allow-Headers": "Content-Type",
+        "Access-Control-Allow-Methods": "GET, POST, OPTIONS",
+    },
+) -> dict:
     return {
+        "headers": headers,
         "statusCode": status_code,
         "body": json.dumps(body),
     }
@@ -27,7 +40,7 @@ def json_response(body, status_code=200) -> dict:
 def update_headers(headers: dict, response: dict) -> dict:
     if response.get("headers"):
         if headers:
-            response.update("headers", headers)
+            response["headers"].update(headers)
     else:
         response["headers"] = headers
     return response

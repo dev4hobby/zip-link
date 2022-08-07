@@ -8,7 +8,7 @@ todo:
 
 .PHONY: black
 black: # Lint the codebase with black.
-	black app
+	black .
 
 .PHONY: test
 test:

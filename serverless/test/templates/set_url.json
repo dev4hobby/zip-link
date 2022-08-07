@@ -1,5 +1,5 @@
 {
-  "body": "{\n    \"url\": \"https://github.com/aciddust\"\n}",
+  "body": "{\n    \"url\": \"https://github.com/sc-ahn\"\n}",
   "resource": "/{proxy+}",
   "path": "/url",
   "httpMethod": "POST",
