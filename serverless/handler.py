@@ -1,7 +1,4 @@
-from modules.utils import (
-    json_response,
-    update_headers
-)
+from modules.utils import json_response, update_headers
 from services.get_url import get_id_by_param
 from services.set_url import set_id_by_param
 from services.redirect_url import redirect_url_by_param

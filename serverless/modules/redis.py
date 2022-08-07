@@ -7,6 +7,7 @@ from modules.env import REDIS_CONFIG as rc
 from datetime import timedelta
 from typing import Union
 
+
 class Redis:
     def __init__(self):
         self.nodes = []
@@ -23,6 +24,9 @@ class Redis:
             encoding_errors="strict",
             unix_socket_path=None,
         )
+
+    def dbsize(self) -> int:
+        return self.redis.dbsize()
 
     def get_keys(self, key_name="*") -> list:
         return self.redis.scan_iter(match=f"{key_name}", count=100)
