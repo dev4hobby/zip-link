@@ -31,7 +31,9 @@ const Home: NextPage = () => {
       body: JSON.stringify({ 'url': url }),
     }).then(res => res.json())
     console.log(response)
-    setUrl(response.url)
+    // if response.url not start with http(s), add http(s)
+    const newUrl = response.url.startsWith('http') ? response.url : `https://${response.url}`
+    setUrl(newUrl)
     handleOpen()
   }
 
