@@ -24,3 +24,7 @@ __pycache__/
 
 # Environment
 config.json
+
+# IDE Settings
+.vscode
+!.vscode/settings.json
