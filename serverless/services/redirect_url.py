@@ -13,6 +13,8 @@ def redirect_url_by_param(event, param_name):
     if not origin_url:
         return ({"message": "No origin url"}, 404)
 
+    if not origin_url.startswith("http"):
+        origin_url = "https://" + origin_url
     headers = {"Location": origin_url}
 
     body = {}
