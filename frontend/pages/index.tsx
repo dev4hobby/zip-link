@@ -78,7 +78,7 @@ const Home: NextPage = () => {
       <Head>
         <title>Z1pLink</title>
         <meta property="og:title" content="Z1pLink" />
-        <meta property="og:image" content="https://z1plink.com/zip_link.png" />
+        <meta property="og:image" content="https://z1plink.com/images/zip-link.png" />
         <meta property="og:description" content="Make your links short and easy to share" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
