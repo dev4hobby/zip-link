@@ -5,6 +5,6 @@
   "httpMethod": "GET",
   "isBase64Encoded": true,
   "pathParameters": {
-    "id": "W3BCCn"
+    "id": "chrome"
   }
 }
