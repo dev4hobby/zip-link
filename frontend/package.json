@@ -6,6 +6,7 @@
     "dev": "next dev",
     "build": "next build && next export",
     "extension": "mv ./out/_next ./out/next && cd ./out && grep -rli '_next' * | xargs -I@ sed -i '' 's|/_next|/next|g' @;",
+    "zip": "zip -r ./out.zip out",
     "start": "next start",
     "lint": "next lint",
     "clean": "rm -rf out"

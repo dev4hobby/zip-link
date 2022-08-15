@@ -28,3 +28,7 @@ config.json
 # IDE Settings
 .vscode
 !.vscode/settings.json
+
+# Chrome Extension
+out.crx
+out.zip
