@@ -8,10 +8,6 @@
     "36": "images/zip-box-36.png",
     "48": "images/zip-box-48.png"
   },
-  "permissions": [
-    "tabs",
-    "contextMenus"
-  ],
   "host_permissions": [
     "*://*/*"
   ],
