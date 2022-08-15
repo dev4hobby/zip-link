@@ -5,6 +5,6 @@
   "httpMethod": "GET",
   "isBase64Encoded": true,
   "pathParameters": {
-    "id": "D3fau1"
+    "id": "git"
   }
 }

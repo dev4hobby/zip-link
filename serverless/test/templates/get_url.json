@@ -5,6 +5,6 @@
   "httpMethod": "GET",
   "isBase64Encoded": true,
   "queryStringParameters": {
-    "id": "6E"
+    "id": "git"
   }
 }
