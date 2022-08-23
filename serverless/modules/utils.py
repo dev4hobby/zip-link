@@ -49,5 +49,5 @@ def update_headers(headers: dict, response: dict) -> dict:
 def quote_url(url: str) -> str:
     return parse.quote(url.strip())
 
-def dequote_url(quoted_url: str) -> str:
+def unquote_url(quoted_url: str) -> str:
     return parse.unquote(quoted_url)

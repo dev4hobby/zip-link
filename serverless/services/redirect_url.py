@@ -1,6 +1,6 @@
 from modules import redis
 from datetime import timedelta
-from modules.utils import dequote_url
+from modules.utils import quote_url
 
 
 def redirect_url_by_param(event, param_name):
@@ -10,20 +10,18 @@ def redirect_url_by_param(event, param_name):
         return ({"message": "Short ID Not Found"}, 404)
 
     short_id = event[param_name]["id"]
-    origin_url = redis.get(short_id)
+    unquoted_url = redis.get(short_id)
 
-    if not origin_url:
+    if not unquoted_url:
         return ({"message": "No origin url"}, 404)
 
-    origin_url = dequote_url(origin_url)
-
-    redis.extend_expire(origin_url, ttl=timedelta(days=7))
+    redis.extend_expire(unquoted_url, ttl=timedelta(days=7))
     redis.extend_expire(short_id, ttl=timedelta(days=7))
 
-    if not origin_url.startswith("http"):
-        origin_url = "https://" + origin_url
-    headers = {"Location": origin_url}
-
+    last_slash_index = unquoted_url.rfind('/')
+    last_info = unquoted_url[last_slash_index + 1:]
+    url = '/'.join([unquoted_url[:last_slash_index],quote_url(last_info)])
+    headers = {"Location": url}
     body = {}
 
     return headers, body, 301

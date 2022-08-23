@@ -4,6 +4,7 @@ from typing import Tuple
 from datetime import timedelta
 from modules.utils import (
     quote_url,
+    unquote_url,
     generate_random_string,
     validate_url_with_regex,
     STRING_SET,
@@ -20,16 +21,16 @@ def set_id_by_param(event, param_name) -> Tuple[dict, int]:
     if not body.get("url"):
         return ({"message": "No url"}, 400)
 
-    url = body["url"]
+    origin_url = body["url"]
+    unquoted_url = unquote_url(origin_url) 
 
-    if not validate_url_with_regex(url):
+    if not validate_url_with_regex(unquoted_url):
         return ({"message": "Invalid url"}, 400)
-    
-    url = quote_url(url)
 
-    short_id = redis.get(url)
+    short_id = redis.get(unquoted_url)
     if short_id:
-        redis.extend_expire(url, ttl=timedelta(days=7))
+        redis.extend_expire(short_id, ttl=timedelta(days=7))
+        redis.extend_expire(unquoted_url, ttl=timedelta(days=7))
         return (
             {"message": "URL expire extended", "url": f"{API_SERVER_URL}/r/{short_id}"},
             200,
@@ -44,8 +45,8 @@ def set_id_by_param(event, param_name) -> Tuple[dict, int]:
             random_string_size += 1
             continue
         new_short_id = generate_random_string(STRING_SET, random_string_size)
-    redis.setex(url, new_short_id, ttl=timedelta(days=7))
-    result = redis.setex(new_short_id, url, ttl=timedelta(days=7))
+    redis.setex(unquoted_url, new_short_id, ttl=timedelta(days=7))
+    result = redis.setex(new_short_id, unquoted_url, ttl=timedelta(days=7))
 
     body = {"message": "New url added", "url": f"{API_SERVER_URL}/r/{new_short_id}"}
     return (body, 200)
