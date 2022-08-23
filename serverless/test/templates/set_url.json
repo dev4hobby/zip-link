@@ -1,5 +1,5 @@
 {
-  "body": "{\n    \"url\": \"https://github.com/sc-ahn\"\n}",
+  "body": "{\n    \"url\": \"https://velog.io/@d3fau1t/URL-Shorter-제작기\"\n}",
   "resource": "/{proxy+}",
   "path": "/url",
   "httpMethod": "POST",
