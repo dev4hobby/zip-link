@@ -2,6 +2,7 @@ import json
 import re
 from random import choice
 from string import ascii_letters, digits
+from urllib import parse
 
 API_SERVER_URL = "https://a.z1p.link"
 
@@ -44,3 +45,9 @@ def update_headers(headers: dict, response: dict) -> dict:
     else:
         response["headers"] = headers
     return response
+
+def quote_url(url: str) -> str:
+    return parse.quote(url.strip())
+
+def dequote_url(quoted_url: str) -> str:
+    return parse.unquote(quoted_url)
