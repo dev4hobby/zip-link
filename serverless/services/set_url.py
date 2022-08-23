@@ -1,9 +1,9 @@
 import json
 from modules import redis
 from typing import Tuple
-from urllib import parse
 from datetime import timedelta
 from modules.utils import (
+    quote_url,
     generate_random_string,
     validate_url_with_regex,
     STRING_SET,
@@ -20,10 +20,12 @@ def set_id_by_param(event, param_name) -> Tuple[dict, int]:
     if not body.get("url"):
         return ({"message": "No url"}, 400)
 
-    url = parse.unquote(body["url"].strip())
+    url = body["url"]
 
     if not validate_url_with_regex(url):
         return ({"message": "Invalid url"}, 400)
+    
+    url = quote_url(url)
 
     short_id = redis.get(url)
     if short_id:

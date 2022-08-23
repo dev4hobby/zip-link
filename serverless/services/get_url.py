@@ -1,6 +1,7 @@
 from modules import redis
 from typing import Tuple
 from datetime import timedelta
+from modules.utils import dequote_url
 
 def get_id_by_param(event, param_name) -> Tuple[dict, int]:
     if not event.get(param_name):
@@ -13,6 +14,8 @@ def get_id_by_param(event, param_name) -> Tuple[dict, int]:
 
     if not origin_url:
         return ({"message": "No origin url"}, 404)
+
+    origin_url = dequote_url(origin_url)
 
     redis.extend_expire(origin_url, ttl=timedelta(days=7))
     redis.extend_expire(short_id, ttl=timedelta(days=7))
