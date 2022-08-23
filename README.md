@@ -1,6 +1,8 @@
-# ZipLink
+# [ZipLink](https://my.z1p.link)
 
-원본 링크를 입력하면 짧은 링크를 만들어줍니다.
+![zip-link-logo](https://user-images.githubusercontent.com/18468557/186044370-29eb2c09-95de-49f2-b55b-acbc80281b3f.png)
+
+## Using
 
 - Serverless
   - AWS
@@ -10,3 +12,7 @@
 - Redis
 - Next.js
 - Chrome Extension
+
+## [Diagram](https://velog.io/@d3fau1t/URL-Shorter-%EC%A0%9C%EC%9E%91%EA%B8%B0)
+
+![image](https://user-images.githubusercontent.com/18468557/186044574-2b7c4c4f-60e1-45ac-9e3a-848c1e55dc12.png)
