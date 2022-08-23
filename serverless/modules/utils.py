@@ -14,6 +14,7 @@ def generate_random_string(string_set: str, length=6) -> str:
 def validate_url(url) -> bool:
     if not url:
         return False
+    return True
     # TODO: Add regex validation
     # return url.startswith("http") or url.startswith("https")
 
