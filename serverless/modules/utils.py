@@ -11,13 +11,12 @@ def generate_random_string(string_set: str, length=6) -> str:
     return "".join(choice(string_set) for i in range(length))
 
 
-def validate_url_with_regex(url) -> bool:
+def validate_url(url) -> bool:
     if not url:
         return False
-    return re.match(
-        r"^(?:http(s)?:\/\/)?[\w.-]+(?:\.[\w\.-]+)+[\w\-\._~:/?#[\]@!\$&'\(\)\*\+,;=.]+$",
-        url,
-    )
+    return True
+    # TODO: Add regex validation
+    # return url.startswith("http") or url.startswith("https")
 
 
 def json_response(

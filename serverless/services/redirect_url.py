@@ -18,7 +18,8 @@ def redirect_url_by_param(event, param_name):
     redis.extend_expire(short_id, ttl=timedelta(days=7))
 
     if not origin_url.startswith("http"):
-        origin_url = "https://" + origin_url
+        origin_url = 'https://' + origin_url
+
     headers = {"Location": origin_url}
 
     body = {}

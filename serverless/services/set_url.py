@@ -5,7 +5,7 @@ from urllib import parse
 from datetime import timedelta
 from modules.utils import (
     generate_random_string,
-    validate_url_with_regex,
+    validate_url,
     STRING_SET,
     API_SERVER_URL,
 )
@@ -21,8 +21,11 @@ def set_id_by_param(event, param_name) -> Tuple[dict, int]:
         return ({"message": "No url"}, 400)
 
     url = parse.unquote(body["url"].strip())
+    url = parse.unquote(body["url"].strip())
+    if not url.startswith("http"):
+        url = 'https://' + url 
 
-    if not validate_url_with_regex(url):
+    if not validate_url(url):
         return ({"message": "Invalid url"}, 400)
 
     short_id = redis.get(url)
