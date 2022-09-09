@@ -19,18 +19,18 @@ def set_id_by_param(event, param_name) -> Tuple[dict, int]:
 
     if not body.get("url"):
         return ({"message": "No url"}, 400)
-    
+
     url = parse.unquote(body["url"].strip())
     url = parse.unquote(url.strip())
 
     if not url.startswith("http"):
-        url = 'https://' + url 
+        url = "https://" + url
 
     if not validate_url(url):
         return ({"message": "Invalid url"}, 400)
-    
+
     splited_url = url.split("/")
-    head = '/'.join(splited_url[:-1])
+    head = "/".join(splited_url[:-1])
     tail = parse.quote(splited_url[-1])
     url = f"{head}/{tail}"
 
