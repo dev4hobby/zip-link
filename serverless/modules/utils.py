@@ -11,12 +11,16 @@ def generate_random_string(string_set: str, length=6) -> str:
     return "".join(choice(string_set) for i in range(length))
 
 
-def validate_url(url) -> bool:
-    if not url:
-        return False
-    return True
-    # TODO: Add regex validation
-    # return url.startswith("http") or url.startswith("https")
+def remove_http_prefix(url: str) -> str:
+    url = re.sub(r"^https?://", "", url)
+    return url
+
+
+def sanitize_url(url) -> str:
+    url = parse.unquote(url.strip())
+    url = parse.unquote(url.strip())
+    url = remove_http_prefix(url)
+    return url
 
 
 def json_response(
