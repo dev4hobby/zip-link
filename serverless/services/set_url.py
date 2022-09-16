@@ -4,8 +4,8 @@ from typing import Tuple
 from urllib import parse
 from datetime import timedelta
 from modules.utils import (
+    sanitize_url,
     generate_random_string,
-    validate_url,
     STRING_SET,
     API_SERVER_URL,
 )
@@ -20,16 +20,9 @@ def set_id_by_param(event, param_name) -> Tuple[dict, int]:
     if not body.get("url"):
         return ({"message": "No url"}, 400)
 
-    url = parse.unquote(body["url"].strip())
-    url = parse.unquote(url.strip())
+    url = sanitize_url(body["url"])
 
-    if not url.startswith("http"):
-        url = "https://" + url
-
-    if not validate_url(url):
-        return ({"message": "Invalid url"}, 400)
-
-    splited_url = url.split("/")
+    splited_url = [_ for _ in url.split("/") if _]
     head = "/".join(splited_url[:-1])
     tail = parse.quote(splited_url[-1])
     url = f"{head}/{tail}"
