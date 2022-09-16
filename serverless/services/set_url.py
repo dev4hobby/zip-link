@@ -4,8 +4,8 @@ from typing import Tuple
 from urllib import parse
 from datetime import timedelta
 from modules.utils import (
+    sanitize_url,
     generate_random_string,
-    remove_http_prefix,
     STRING_SET,
     API_SERVER_URL,
 )
@@ -21,7 +21,6 @@ def set_id_by_param(event, param_name) -> Tuple[dict, int]:
         return ({"message": "No url"}, 400)
 
     url = sanitize_url(body["url"])
-    url = remove_http_prefix(url)
 
     splited_url = [_ for _ in url.split("/") if _]
     head = "/".join(splited_url[:-1])

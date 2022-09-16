@@ -2,6 +2,7 @@ import json
 import re
 from random import choice
 from string import ascii_letters, digits
+from urllib import parse
 
 API_SERVER_URL = "https://a.z1p.link"
 
