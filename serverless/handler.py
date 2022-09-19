@@ -2,6 +2,7 @@ from modules.utils import json_response, update_headers
 from services.get_url import get_id_by_param
 from services.set_url import set_id_by_param
 from services.redirect_url import redirect_url_by_param
+from services.go_to_web import go_to_zip_by_param
 
 
 def get_url(event, context):
@@ -21,5 +22,11 @@ def set_url(event, context):
 
 def redirect_url(event, context):
     header, body, status_code = redirect_url_by_param(event, "pathParameters")
+    response = update_headers(header, json_response(body, status_code))
+    return response
+
+
+def go_to_web(event, context):
+    header, body, status_code = go_to_zip_by_param(event, "pathParameters")
     response = update_headers(header, json_response(body, status_code))
     return response
