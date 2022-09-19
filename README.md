@@ -11,7 +11,7 @@
     - Route 53
 - Redis
 - Next.js
-- Chrome Extension
+- [Chrome Extension](https://a.z1p.link/r/chrome)
 
 ## [Diagram](https://velog.io/@d3fau1t/URL-Shorter-%EC%A0%9C%EC%9E%91%EA%B8%B0)
 
