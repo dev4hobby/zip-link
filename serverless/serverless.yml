@@ -57,3 +57,12 @@ functions:
           method: get
     layers:
       - ${file(./config.json):LAMBDA_LAYER}
+
+  go_to_web:
+    handler: handler.go_to_web
+    events:
+      - http:
+          path: /
+          method: get
+    layers:
+      - ${file(./config.json):LAMBDA_LAYER}
